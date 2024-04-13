@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DASHBOARD</title>
+</head>
+<body>
+
+
+<div class="container">
+<div class="row">
+<div class="col-sm-12">
+    {% if messages %}
+    {% for message in messages %}
+<!--    <h3 {% if message.tags %} class="alert alert-{{message.tags}}"-->
+<!--          {% endif %}> {{message}}  </h3>-->
+
+    <div {% if message.tags %} class="alert alert-{{message.tags}}
+    alert-dismissible fade show" {% endif %}>
+  <strong>{{message}}</strong>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+    {% endfor %}
+    {% endif %}
+</div> </div>  </div>
+
+</body>
+</html>

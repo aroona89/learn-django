@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Dashboard">
+    <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+
+    <title>DMS | User Login</title>
+
+
+    <link rel="stylesheet" href="{% static 'main/css/bootstrap.min-15.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/login.css' %}">
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'main/css/bootstrap-3.3.7.css' %}" rel="stylesheet">
+    <!--external css-->
+    <link type="text/css" href="{% static 'main/css/font-awesome-4.1.0.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'main/css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'main/css/style-responsive.css' %}" rel="stylesheet">
+</head>
+
+<body>
+    <div id="login-page">
+
+        <div class="container">
+            <h3 align="center" style="color:#fff"><a href="{% url 'home'%}" style="color:#fff">Document Management
+                    System</a></h3>
+            <hr style="height:1px;border-width:500;color:white;background-color:rgb(237, 227, 227)">
+            <form class="form-login" method="post">
+                {%csrf_token%}
+
+                <h2 class="form-login-heading">sign in now</h2>
+                <div class="login-wrap">
+                    {% for fm in form %} <!--    form    -->
+                    <div class="form-group">
+                        {{fm}} <br>
+                        <small class="text-warning">{{fm.errors|striptags}}</small>
+                    </div>
+                    {% endfor %}
+
+                    {% if form.non_field_errors %} <!--     form error   -->
+                    {% for error in form.non_field_errors %}
+                    <p class="text-danger">{{error}}</p>
+                    {% endfor %}
+                    {% endif %}
+
+                    <div class="mb-3" style="text-align:right;">
+                        <a href="#" onclick="showModel()">Forget Password?</a>
+                    </div>
+
+                    <button class="btn btn-theme btn-block" name="submit" type="submit"><i class="fa fa-lock"></i> SIGN
+                        IN</button>
+                    <hr>
+            </form>
+
+            <div>
+				{% for message in messages %}
+				<p id="messages" style="padding-left:4%; padding-top:2%;  color:green">{{message}}</p>
+				{% endfor %}
+			</div>
+
+            <div class="registration">
+                Don't have an account yet?<br />
+                <a class="" href="{%url 'signup'%}">
+                    Create an account
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="overlay" onclick="closeModel()"></div> <!-- popup start  -->
+    <div class="resetform">
+        <span onclick="closeModel()">&times;</span>
+
+        <div class="mt-5">
+            <form action="" method="POST"> 
+                {% csrf_token %}
+                {% for form in fm %}
+                {{form}}<br>
+                <small class="text-warning">{{form.errors|striptags}}</small>
+                {% endfor %}
+
+                {% if form.non_field_errors %} <!--     form error   -->
+                {% for error in form.non_field_errors %}
+                <p class="text-danger">{{error}}</p>
+                {% endfor %}
+                {% endif %}
+
+                <input type="submit" value="submit">
+            </form>
+        </div>
+    </div> <!-- popup end   -->
+
+
+
+    <!-- <script src="{% static 'js/popper.js' %}"></script>
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/all.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.js' %}"></script> -->
+
+
+    <!-- js placed at the end of the document so the pages load faster -->
+    <script src="{% static 'main/js/jquery-1.11.1.js' %}"></script>
+    <script src="{% static 'main/js/bootstrap.min-3.3.7.js' %}"></script>
+
+    <!--BACKSTRETCH-->
+    <!-- You can use an image of whatever size. This script will stretch to fit in any screen size.-->
+    <script type="text/javascript" src="{% static 'main/js/jquery.backstretch.min.js' %}"></script>
+    <script>
+        $.backstretch("{% static 'main/images/bg.jpg' %}", { speed: 500 });
+    </script>
+</body>
+<script>
+    function showModel() {
+        document.querySelector('.overlay').classList.add('showoverlay')
+        document.querySelector('.resetform').classList.add('showresetform')
+
+    }
+    function closeModel() {
+        document.querySelector('.overlay').classList.remove('showoverlay')
+        document.querySelector('.resetform').classList.remove('showresetform')
+
+    }
+</script>
+
+</html>

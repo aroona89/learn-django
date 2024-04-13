@@ -1,0 +1,18 @@
+body{
+min-height:100vh;
+width:100vw;
+overflow-x:hidden;
+}
+container-fluid{
+min-height:100%;
+overflow-x:hidden;
+}
+
+container-fluid{
+min-height:100%;
+}
+
+form .form-control{
+width: 40%;
+margin-left:100px;
+}

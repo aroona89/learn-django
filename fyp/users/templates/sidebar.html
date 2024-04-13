@@ -1,0 +1,44 @@
+ {% load static %}
+ <!-- sidebar menu start-->
+              <ul class="sidebar-menu" id="nav-accordion">
+                <p class="centered"><a href="{%url 'update-image'%}">
+                    <img src="{% static 'main/images/noimage.png'%}"  class="img-circle" width="70" height="70" ></a></p>
+                    <h5 class="centered">{{request.user}}</h5>
+                                      
+                  <li class="mt">
+                      <a href="{%url 'UserDashboard'%}">
+                          <i class="fa fa-dashboard"></i>
+                          <span>Dashboard</span>
+                      </a>
+                  </li>
+
+                  <li class="sub-menu">
+                    <a href="javascript:;" >
+                        <i class="fa fa-cogs"></i>
+                        <span>Account Setting</span>
+                    </a>
+                    <ul class="sub">
+                        <li><a  href="{%url 'UserProfile'%}">Profile</a></li>
+                        <li><a  href="{%url 'UserCanChangePassword'%}">Change Password</a></li>
+                      
+                    </ul>
+                </li>
+
+                <li class="sub-menu">
+                    <a href="{%url 'UserLodgeComplaint'%}" >
+                        <i class="fa fa-book"></i>
+                        <span>Upload Document</span>
+                    </a>
+                  </li>
+                </li>
+
+                <li class="sub-menu">
+                    <a href="{%url 'UserComplaintHistory'%}" >
+                        <i class="fa fa-tasks"></i>
+                        <span>Complaints History</span>
+                    </a>
+                    
+                </li>
+               
+            </ul>
+            <!-- sidebar menu end-->

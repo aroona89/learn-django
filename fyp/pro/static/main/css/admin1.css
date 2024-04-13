@@ -1,0 +1,46 @@
+
+body{
+min-height:100vh;
+width:100vw;
+overflow-x:hidden;
+}
+container-fluid{
+min-height:100%;
+overflow-x:hidden;
+}
+
+
+table{
+    width: 20%;
+    margin-top: 50px;
+}
+
+table a{
+    color:darkgray;
+    text-decoration: none;
+}
+
+table a:hover{
+    color: white;
+}
+
+.container-fluid{
+    background-color:rgba(209, 197, 197, 0.34);
+}
+.form-box{
+    background-color: white;
+}
+
+form .form-control{
+width: 50%;
+margin-left:20px;
+}
+form .btn{
+margin-left:20px;}
+
+
+.img-fluid{
+    width: 37px;
+    height: 37px;
+    margin-top: 12px;
+}

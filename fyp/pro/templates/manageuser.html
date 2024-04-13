@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="{% static 'main/css/all.min.css' %}">
+  <link rel="stylesheet" href="{% static 'main/css/bootstrap.min1.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/admin1.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/manageuser.css' %}">
+    <title>Admin|Manage Users</title>
+</head>
+<body>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-2">
+                <h3 class="mt-4 font-weight-bold" >DAS | Admin</h3>
+            </div>
+            <div class="col-sm-2 offset-sm-8">
+                <a href="#" class="btn mt-4">Admin Panel</a>
+                <img src="{% static 'main/images/user.png' %}" class="img-fluid" alt="Responsive image">
+            </div>
+        </div>
+    </div>
+    <hr class="p-0 m-0">
+
+
+      <div class="container-fluid p-0 m-0">   <!-- container-fluid start -->
+
+          <div class="row">
+            <div class="col-sm-3 offset-sm-1"> <!-- container-fluid col start -->
+              <table class="table table-dark"
+              style="width: 80%;">
+            <tbody>
+                <tr>
+                    <td class="p-3">
+                      <i class="fa-solid fa-gear"></i>
+                      <a href="{% url 'managecomplaint' %}">Change Password</a>
+                    </td>
+                  </tr>
+              <tr>
+                 <td class="p-3">
+                    <i class="fa-solid fa-user"></i>
+                    <a href="{% url 'manageuser' %}"> Manage Users</a>
+                 </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <table class="table table-dark mt-4"
+          style="width: 80%;">
+            <tbody>
+                <tr>
+                  <td class="p-3">
+                    <i class="fa-solid fa-bars"></i>
+                    <a href="{% url 'addcategory' %}">Add Category</a>
+                  </td>
+                </tr>
+              <tr>
+                <td class="p-3">
+                  <i class="fa-solid fa-bars"></i>
+                <a href="{% url 'addsubcategory' %}">Add Sub-Category</a></td>
+              </tr>
+              <tr>
+                <td class="p-3">
+                  <i class="fa-brands fa-usps"></i>
+                  <a href="{% url 'addstate' %}">Add State</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <table class="table table-dark my-4 mb-5"
+          style="width: 80%;">
+            <tbody>
+                <tr>
+                    <td class="p-3">
+                      <i class="fa-solid fa-bars"></i>
+                      <a href="{% url 'userloginlog' %}">User Login Log</a>
+                    </td>
+                  </tr>
+              <tr>
+                <td class="p-3">
+                  <i class="fa-solid fa-right-from-bracket"></i>
+                  <a href="{% url 'logoutpage' %}">Logout</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+            </div>             <!-- container-fluid col end -->
+
+          <div class="col-sm-7">           <!-- container-fluid col start -->
+            <div class="form-box">        <!-- form-box div open   -->
+            <h6 class="my-5 bg-light px-3"
+            style="height: 40px; line-height: 40px;">
+            View & Manage Users</h6>
+  <table class="table table-bordered table-hover p-0 m-0">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Username</th>
+      <th scope="col">Email</th>
+      <th scope="col">Staff</th>
+      <th scope="col">Active</th>
+      <th scope="col">Date joined</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+      {% for user in users %}
+  <tbody>
+    <tr>
+      <th scope="row">{{user.id}}</th>
+      <td>{{user.username}}</td>
+      <td>{{user.email}}</td>
+      <td>{{user.is_staff}}</td>
+      <td>{{user.is_active}}</td>
+      <td>{{user.date_joined}}</td>
+      <td>
+          <form action="{% url 'DeleteUser' user.id %}" method="POST" class="d-inline"> {% csrf_token %}
+              <input type="submit" class="btn btn-danger btn-sm m-0" value="Delete">
+          </form>
+      </td>
+
+    </tr>
+  </tbody>
+      {% endfor %}
+</table>
+
+
+
+          </div>            <!-- form-box div close   -->
+          </div>             <!-- container-fluid col end   -->
+
+
+
+
+          </div>       <!--  container-fluid row end -->
+      </div>     <!--  container-fluid end -->
+      <hr class="p-0 m-0">
+        <div class="container mt-3">
+            2023 CMS  <span class="text-secondary">All rights Reserved</span>
+        </div>
+
+
+
+
+<script src="{% static 'main/js/popper.js' %}"></script>
+    <script src="{% static 'main/js/jquery.js' %}"></script>
+    <script src="{% static 'main/js/all.min.js' %}"></script>
+    <script src="{% static 'main/js/bootstrap.min.js' %}"></script>
+</body>
+</html>

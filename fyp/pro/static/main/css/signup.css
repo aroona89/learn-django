@@ -1,0 +1,43 @@
+
+ body{
+  /*  background-image: url('{% static "img/login-bg.jpg" %}');       */
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+/* .container{
+    min-height: 100px;
+} */
+
+.form-box{
+    width: 23%;
+    height:69%;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    background-color: white;
+}
+
+
+form .btn{
+font-size:15px;
+color: white;
+}
+
+form .fa-solid fa-user{
+font-size:13px;}
+
+
+form .tag{
+text-align:center;
+text-decoration:none;
+}
+
+form .up{
+background-color:#82EEFD;}
+
+form .up:hover{
+background-color:#219f9c;}
